@@ -81,4 +81,16 @@ router.route("/:id")
         }
     })
 
+router.route("/completed/:id")
+    .patch(async (request, response: CurrentTaskResponse) => {
+        response.currentTask.completed = request.body.completed;
+
+        try {
+            const updatedTask = await response.currentTask.save();
+            response.json(updatedTask);
+        } catch (error) {
+            response.status(400).json({message: (error as Error).message});
+        }
+    })
+
 module.exports = router;
