@@ -9,7 +9,7 @@ const app = express();
 // Cross-Origin Resource Sharing
 import cors from "cors";
 app.use(cors({
-    origin: "http://127.0.0.1:3002",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true
 }));
